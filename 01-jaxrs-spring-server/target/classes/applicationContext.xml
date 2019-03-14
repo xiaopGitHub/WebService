@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://cxf.apache.org/jaxrs
+        http://cxf.apache.org/schemas/jaxrs.xsd" >
+
+    <!--
+        spring整合CXF服务端配置,发布基于restful风格的服务
+        1. 服务地址
+        2. 服务类
+    -->
+    <jaxrs:server address="/stuService">
+        <jaxrs:serviceBeans>
+            <bean class="com.xp.service.imp.StudentService"></bean>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+
+</beans>

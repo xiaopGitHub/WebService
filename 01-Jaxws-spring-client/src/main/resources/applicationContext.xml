@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <!--
+        spring整合CXF客户端配置
+        1. 服务地址 http:localhost:8080/ws/hello
+        2. 服务接口类型(根据接口类型生成代理对象)
+    -->
+    <jaxws:client
+            id="helloService"
+            serviceClass="com.xp.service.IHelloService"
+            address="http://localhost:8080/ws/hello">
+
+    </jaxws:client>
+
+</beans>

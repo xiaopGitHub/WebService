@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <!-- 配置扫描注解,不扫描@Controller注解的bean,而扫描所有bean,service,
+         @Controller注解的bean交给SpringMVC配置文件扫描,避免被创建两次 -->
+    <context:component-scan base-package="com.xp">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+
+    <!--
+        spring整合CXF服务端配置
+        1. 服务地址
+        2. 服务类
+        服务完整访问地址: http:localhost:8080/ws/hello
+    -->
+    <jaxws:server address="/hello">
+        <jaxws:serviceBean>
+            <bean class="com.xp.service.imp.HelloService"/>
+        </jaxws:serviceBean>
+    </jaxws:server>
+
+</beans>
